@@ -3,5 +3,5 @@
     <item name="colorPrimary" type="color">#5687a8</item>
     <item name="colorPrimaryDark" type="color">#416985</item>
     <item name="drawer_color" type="color">#6C93CD</item>
-    <item name="text_color" type="color">#FFF</item>
+    <item name="text_color" type="color">#f2f2f2</item>
 </resources>
