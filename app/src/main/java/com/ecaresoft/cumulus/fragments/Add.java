@@ -1,4 +1,4 @@
-package fragments;
+package com.ecaresoft.cumulus.fragments;
 
 /**
  * Created by juan on 10/06/15.

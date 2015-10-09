@@ -15,16 +15,16 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import java.util.ArrayList;
 import adapter.DrawerAdapter;
-import fragments.Alergias;
-import fragments.Citas;
-import fragments.Diagnosticos;
-import fragments.HistoriaClinica;
-import fragments.HistoriaFamiliar;
-import fragments.HistoriaPersonal;
-import fragments.Home;
-import fragments.Medicamentos;
-import fragments.Recetas;
-import models.Item;
+import com.ecaresoft.cumulus.fragments.FAllergy;
+import com.ecaresoft.cumulus.fragments.FAppointment;
+import com.ecaresoft.cumulus.fragments.FDiagnostic;
+import com.ecaresoft.cumulus.fragments.FClinicHistory;
+import com.ecaresoft.cumulus.fragments.FFamilyHistory;
+import com.ecaresoft.cumulus.fragments.FHome;
+import com.ecaresoft.cumulus.fragments.FPersonalHistory;
+import com.ecaresoft.cumulus.fragments.FHomeMeds;
+import com.ecaresoft.cumulus.fragments.FPrescription;
+import com.ecaresoft.cumulus.models.Item;
 
 public class MainActivity extends ActionBarActivity {
     private ListView drawerList;
@@ -84,37 +84,37 @@ public class MainActivity extends ActionBarActivity {
 
         switch (position){
             case 0:
-                fragment= new Home();
+                fragment= new FHome();
                 break;
             case 1:
-                fragment= new Citas();
+                fragment= new FAppointment();
                 break;
             case 2:
-                fragment= new Recetas();
+                fragment= new FPrescription();
                 break;
             case 3:
-                fragment= new HistoriaClinica();
+                fragment= new FClinicHistory();
                 break;
             case 4:
-                fragment= new HistoriaPersonal();
+                fragment= new FPersonalHistory();
                 break;
             case 5:
-                fragment= new HistoriaFamiliar();
+                fragment= new FFamilyHistory();
                 break;
             case 6:
-                fragment= new Alergias();
+                fragment= new FAllergy();
                 break;
             case 7:
-                fragment= new Diagnosticos();
+                fragment= new FDiagnostic();
                 break;
             case 8:
-                fragment= new Medicamentos();
+                fragment= new FHomeMeds();
                 break;
 
             default:
                 //
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.abc_action_bar_home_description),Toast.LENGTH_SHORT).show();
-                fragment = new Home();
+                fragment = new FHome();
                 position =1;
                 break;
         }
@@ -175,7 +175,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the FHome/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 

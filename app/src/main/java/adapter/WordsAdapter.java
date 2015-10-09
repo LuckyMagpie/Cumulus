@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.juan.eduquer.R;
 import java.util.List;
-import models.Item;
+import com.ecaresoft.cumulus.models.Item;
 /**
  * Created by juan on 12/06/15.
  *//*

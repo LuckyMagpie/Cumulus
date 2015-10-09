@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.ecaresoft.cumulus.R;
 
 import java.util.List;
-import models.Item;
+import com.ecaresoft.cumulus.models.Item;
 
 /**
  * Created by juan on 10/06/15.

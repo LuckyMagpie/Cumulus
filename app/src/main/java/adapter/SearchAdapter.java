@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.ecaresoft.cumulus.R;
 
-import models.Items;
+import com.ecaresoft.cumulus.models.Items;
 
 public class SearchAdapter extends BaseAdapter {
 

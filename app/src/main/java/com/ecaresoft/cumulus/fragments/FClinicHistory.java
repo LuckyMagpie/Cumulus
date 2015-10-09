@@ -1,4 +1,4 @@
-package fragments;
+package com.ecaresoft.cumulus.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,9 +13,9 @@ import com.ecaresoft.cumulus.R;
 /**
  * Created by juanortizjr on 9/10/15.
  */
-public class Medicamentos extends Fragment {
+public class FClinicHistory extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
-        View rootView = inflater.inflate(R.layout.medicamentos,container,false);
+        View rootView = inflater.inflate(R.layout.historia_clinica,container,false);
         setHasOptionsMenu(true);
         setRetainInstance(true);
         return rootView;

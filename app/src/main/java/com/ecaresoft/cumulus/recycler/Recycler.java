@@ -1,4 +1,4 @@
-package recycler;
+package com.ecaresoft.cumulus.recycler;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import com.ecaresoft.cumulus.R;
 import java.util.ArrayList;
 import java.util.List;
-import models.Items;
+import com.ecaresoft.cumulus.models.Items;
 
 /**
  * Created by juan on 19/07/15.
@@ -48,7 +48,7 @@ public class Recycler extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the FHome/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 

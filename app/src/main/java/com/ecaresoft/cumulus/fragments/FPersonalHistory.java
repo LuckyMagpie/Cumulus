@@ -1,4 +1,4 @@
-package fragments;
+package com.ecaresoft.cumulus.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,15 +7,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.ecaresoft.cumulus.R;
 
+import com.ecaresoft.cumulus.R;
 
 /**
  * Created by juanortizjr on 9/10/15.
  */
-public class Alergias extends Fragment {
+public class FPersonalHistory extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
-        View rootView = inflater.inflate(R.layout.alergias,container,false);
+        View rootView = inflater.inflate(R.layout.historia_personal,container,false);
         setHasOptionsMenu(true);
         setRetainInstance(true);
         return rootView;
@@ -26,5 +26,4 @@ public class Alergias extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_main, menu);
     }
-
 }

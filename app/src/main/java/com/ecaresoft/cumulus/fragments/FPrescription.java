@@ -1,4 +1,4 @@
-package fragments;
+package com.ecaresoft.cumulus.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,7 +13,7 @@ import com.ecaresoft.cumulus.R;
 /**
  * Created by juanortizjr on 9/10/15.
  */
-public class Recetas extends Fragment {
+public class FPrescription extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
         View rootView = inflater.inflate(R.layout.recetas,container,false);
         setHasOptionsMenu(true);

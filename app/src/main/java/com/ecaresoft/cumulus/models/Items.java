@@ -1,4 +1,4 @@
-package models;
+package com.ecaresoft.cumulus.models;
 
 import java.util.List;
 

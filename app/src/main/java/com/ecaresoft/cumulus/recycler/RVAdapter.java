@@ -1,4 +1,4 @@
-package recycler;
+package com.ecaresoft.cumulus.recycler;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.ecaresoft.cumulus.R;
 import java.util.List;
-import models.Items;
+import com.ecaresoft.cumulus.models.Items;
 
 /**
  * Created by juan on 19/07/15.

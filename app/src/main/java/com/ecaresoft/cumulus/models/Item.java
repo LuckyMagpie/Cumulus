@@ -1,6 +1,4 @@
-package models;
-
-import java.util.Date;
+package com.ecaresoft.cumulus.models;
 
 /**
  * Created by juan on 10/06/15.

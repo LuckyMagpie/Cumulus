@@ -1,4 +1,4 @@
-package models;
+package com.ecaresoft.cumulus.models;
 
 public class NextPage {
 	String title;
