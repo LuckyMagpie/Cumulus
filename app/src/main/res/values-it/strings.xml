@@ -22,4 +22,6 @@
         <item>Medicines</item>
     </string-array>
     <string name="enter">Enter</string>
+    <string name="User">User</string>
+    <string name="password">Password</string>
 </resources>

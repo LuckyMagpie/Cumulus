@@ -8,10 +8,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/user"
-        android:width="200dp"
         android:layout_above="@+id/password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="39dp" />
+        android:layout_marginBottom="39dp"
+        android:layout_alignRight="@+id/password"
+        android:layout_alignEnd="@+id/password"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignStart="@+id/password"
+        android:hint="@string/User" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -20,7 +23,9 @@
         android:ems="10"
         android:id="@+id/password"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:hint="@string/password"
+        android:phoneNumber="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -29,5 +34,6 @@
         android:id="@+id/enter"
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp" />
+        android:layout_marginTop="55dp"
+        android:theme="@style/Base.V21.Theme.AppCompat.Light" />
 </RelativeLayout>

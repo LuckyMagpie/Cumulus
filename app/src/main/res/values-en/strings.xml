@@ -10,6 +10,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="enter" >Enter</string>
+    <string name="User">User</string>
 
     <string-array name="tags">
         <item>Home</item>
@@ -22,4 +23,5 @@
         <item>Diagnosis</item>
         <item>Medicines</item>
     </string-array>
+    <string name="password">Password</string>
 </resources>
