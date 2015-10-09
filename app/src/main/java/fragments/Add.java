@@ -16,12 +16,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import com.example.juan.eduquer.R;
-import helper.DataBaseHelper;
 import models.Item;
 
 /**
  * Created by juan on 10/06/15.
- */
+ *//*
 public class Add extends Fragment implements View.OnClickListener{
     private ImageButton btnSend;
     private EditText etWords;
@@ -51,47 +50,13 @@ public class Add extends Fragment implements View.OnClickListener{
             try {
                 if(etWords.length()>0) {
                     word=etWords.getText().toString();
-                    new CheckDataBase().execute();
                 }else{
-                    Toast.makeText(getActivity().getApplicationContext(),getResources().getString(R.string.please),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),getResources().getString(R.string.abc_action_bar_home_description),Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception ex) {}
         }
     }
 
-    class CheckDataBase extends AsyncTask<String,String,Boolean> {
-        ProgressDialog progressDialog;
 
-        @Override
-        protected void onPostExecute(Boolean s) {
-            super.onPostExecute(s);
-            progressDialog.dismiss();
-            if(!s) Toast.makeText(getActivity().getApplicationContext(),getResources().getString(R.string.wordadded),Toast.LENGTH_SHORT).show();
-            else Toast.makeText(getActivity().getApplicationContext(),"Error "+word+getResources().getString(R.string.already),Toast.LENGTH_SHORT).show();
-            etWords.setText("");
-        }
-
-        @Override
-        protected Boolean doInBackground(String... params) {
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(getActivity().getApplicationContext());
-            for (Item i : dataBaseHelper.getALl()) {
-                if (i.getName().equals(word)) {
-                    dataBaseHelper.close();
-                    return true;
-                }
-            }
-            dataBaseHelper.putInformation(dataBaseHelper, etWords.getText().toString());
-            dataBaseHelper.close();
-            return false;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog=new ProgressDialog(getActivity());
-            progressDialog.setMessage(getResources().getString(R.string.wait));
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.show();
-        }
-    }
 }
+*/

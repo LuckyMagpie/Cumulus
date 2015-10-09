@@ -4,9 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
     <include layout="@layout/toolbar"/>
-
     <android.support.v4.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +25,7 @@
                 android:id="@+id/nav"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:divider="#5BDEA3"
+                android:divider="#B8B8B8"
                 android:background="@color/white"
                 android:dividerHeight="1dp" />
         </RelativeLayout>

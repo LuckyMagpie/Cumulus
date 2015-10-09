@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="176dp"
         android:id="@+id/imvHome"
-        android:src="@drawable/set"
         android:adjustViewBounds="true"
         android:layout_centerInParent="true"/>
 
@@ -20,7 +19,7 @@
         android:paddingLeft="5sp"
         android:paddingRight="5sp"
         android:id="@+id/tvMuestra4"
-        android:text="@string/home"
+        android:text=""
         android:textSize="20sp"
         android:textIsSelectable="false"
         android:gravity="center"

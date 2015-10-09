@@ -33,16 +33,15 @@
             android:id="@+id/imvLink"
             android:layout_width="100sp"
             android:layout_height="60sp"
-            android:src="@drawable/browser"
             android:layout_marginTop="15sp"
             android:layout_marginBottom="10sp"
-            android:contentDescription="@string/nothing"
+            android:contentDescription=""
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_height="wrap_content"
-            android:text="@string/demo"
+            android:text=""
             android:layout_width="wrap_content"
             android:id="@+id/tvLink"
             android:textSize="7pt"
@@ -54,7 +53,7 @@
 
         <TextView
             android:layout_height="35sp"
-            android:text="@string/test"
+            android:text=""
             android:layout_width="match_parent"
             android:id="@+id/tvTitle"
             android:layout_marginRight="10sp"

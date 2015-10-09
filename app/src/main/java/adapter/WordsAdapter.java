@@ -1,5 +1,5 @@
 package adapter;
-
+/*
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.juan.eduquer.R;
 import java.util.List;
-import helper.DataBaseHelper;
 import models.Item;
 /**
  * Created by juan on 12/06/15.
- */
+ *//*
 public class WordsAdapter extends ArrayAdapter {
     DataBaseHelper dop= new DataBaseHelper(getContext());
     public WordsAdapter(Context context, List objects){
@@ -42,4 +41,4 @@ public class WordsAdapter extends ArrayAdapter {
         else if(progress>=20){ image2.setImageResource(R.drawable.bar3);}
         return convertView;
     }
-}
+}*/

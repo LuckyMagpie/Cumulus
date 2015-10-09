@@ -15,15 +15,18 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import java.util.ArrayList;
 import adapter.DrawerAdapter;
-import algorithms.Low;
-import fragments.Add;
+import fragments.Alergias;
+import fragments.Citas;
+import fragments.Diagnosticos;
+import fragments.HistoriaClinica;
+import fragments.HistoriaFamiliar;
+import fragments.HistoriaPersonal;
 import fragments.Home;
-import fragments.Look;
-import fragments.Remove;
+import fragments.Medicamentos;
+import fragments.Recetas;
 import models.Item;
 
 public class MainActivity extends ActionBarActivity {
-    Low low;
     private ListView drawerList;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
@@ -47,8 +50,8 @@ public class MainActivity extends ActionBarActivity {
         setupDrawer();
 
         if (savedInstanceState == null) {
-            ShowFragment(0);        }
-        low=new Low(getApplicationContext());
+            ShowFragment(0);
+        }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -56,10 +59,15 @@ public class MainActivity extends ActionBarActivity {
 
     private void addDrawerItems() {
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(tagTitles[0], R.drawable.home));
-        items.add(new Item(tagTitles[1], R.drawable.add));
-        items.add(new Item(tagTitles[2], R.drawable.stack));
-        items.add(new Item(tagTitles[3], R.drawable.look));
+        items.add(new Item(tagTitles[0], R.drawable.hospital));
+        items.add(new Item(tagTitles[1], R.drawable.hospital));
+        items.add(new Item(tagTitles[2], R.drawable.hospital));
+        items.add(new Item(tagTitles[3], R.drawable.hospital));
+        items.add(new Item(tagTitles[4], R.drawable.hospital));
+        items.add(new Item(tagTitles[5], R.drawable.hospital));
+        items.add(new Item(tagTitles[6], R.drawable.hospital));
+        items.add(new Item(tagTitles[7], R.drawable.hospital));
+        items.add(new Item(tagTitles[8], R.drawable.hospital));
 
         drawerList.setAdapter(new DrawerAdapter(this, items));
 
@@ -79,18 +87,33 @@ public class MainActivity extends ActionBarActivity {
                 fragment= new Home();
                 break;
             case 1:
-                fragment= new Add();
+                fragment= new Citas();
                 break;
             case 2:
-                fragment= new Remove();
+                fragment= new Recetas();
                 break;
             case 3:
-                fragment= new Look();
+                fragment= new HistoriaClinica();
+                break;
+            case 4:
+                fragment= new HistoriaPersonal();
+                break;
+            case 5:
+                fragment= new HistoriaFamiliar();
+                break;
+            case 6:
+                fragment= new Alergias();
+                break;
+            case 7:
+                fragment= new Diagnosticos();
+                break;
+            case 8:
+                fragment= new Medicamentos();
                 break;
 
             default:
                 //
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.noavai),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.abc_action_bar_home_description),Toast.LENGTH_SHORT).show();
                 fragment = new Home();
                 position =1;
                 break;
