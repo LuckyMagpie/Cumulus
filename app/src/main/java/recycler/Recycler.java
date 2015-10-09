@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.example.juan.eduquer.R;
+import com.ecaresoft.cumulus.R;
 import java.util.ArrayList;
 import java.util.List;
 import models.Items;

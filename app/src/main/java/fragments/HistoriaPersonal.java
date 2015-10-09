@@ -8,7 +8,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.juan.eduquer.R;
+import com.ecaresoft.cumulus.R;
 
 /**
  * Created by juanortizjr on 9/10/15.

@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.juan.eduquer.R;
+
+import com.ecaresoft.cumulus.R;
+
 import java.util.List;
 import models.Item;
 

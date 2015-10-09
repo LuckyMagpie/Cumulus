@@ -1,4 +1,4 @@
-package com.example.juan.eduquer;
+package com.ecaresoft.cumulus;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
