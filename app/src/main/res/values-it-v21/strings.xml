@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cumulus</string>
+    <string name="app_name">Eduquer</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
@@ -12,13 +12,11 @@
 
     <string-array name="tags">
         <item>Home</item>
-        <item>Dates</item>
-        <item>Prescription</item>
-        <item>Clinic History</item>
-        <item>Personal History</item>
-        <item>Familiar History</item>
-        <item>Allergies</item>
-        <item>Diagnosis</item>
-        <item>Medicines</item>
+        <item>Citas</item>
+        <item>Recetas</item>
+        <item>Historia Cl\u00EDnica</item>
+        <item>Alergias</item>
+        <item>Diagn\u00F3sticos</item>
+        <item>Medicamentos</item>
     </string-array>
 </resources>
