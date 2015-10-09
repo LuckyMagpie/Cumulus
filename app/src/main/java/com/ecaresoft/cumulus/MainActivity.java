@@ -44,6 +44,8 @@ public class MainActivity extends ActionBarActivity {
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         tagTitles= getResources().getStringArray(R.array.tags);
 
+        View header = getLayoutInflater().inflate(R.layout.header, null);
+        drawerList.addHeaderView(header);
         addDrawerItems();
         setupDrawer();
 

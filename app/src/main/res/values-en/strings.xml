@@ -11,7 +11,7 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="enter" >Enter</string>
     <string name="User">User</string>
-    
+
 
     <string-array name="tags">
         <item>Home</item>
