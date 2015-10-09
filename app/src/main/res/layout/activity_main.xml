@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:divider="#B8B8B8"
                 android:background="@color/white"
-                android:dividerHeight="1dp" />
+                android:dividerHeight="-1dp" />
         </RelativeLayout>
     </android.support.v4.widget.DrawerLayout>
 </LinearLayout>

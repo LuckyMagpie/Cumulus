@@ -19,9 +19,7 @@ import com.ecaresoft.cumulus.fragments.FAllergy;
 import com.ecaresoft.cumulus.fragments.FAppointment;
 import com.ecaresoft.cumulus.fragments.FDiagnostic;
 import com.ecaresoft.cumulus.fragments.FClinicHistory;
-import com.ecaresoft.cumulus.fragments.FFamilyHistory;
 import com.ecaresoft.cumulus.fragments.FHome;
-import com.ecaresoft.cumulus.fragments.FPersonalHistory;
 import com.ecaresoft.cumulus.fragments.FHomeMeds;
 import com.ecaresoft.cumulus.fragments.FPrescription;
 import com.ecaresoft.cumulus.models.Item;
@@ -66,8 +64,6 @@ public class MainActivity extends ActionBarActivity {
         items.add(new Item(tagTitles[4], R.drawable.hospital));
         items.add(new Item(tagTitles[5], R.drawable.hospital));
         items.add(new Item(tagTitles[6], R.drawable.hospital));
-        items.add(new Item(tagTitles[7], R.drawable.hospital));
-        items.add(new Item(tagTitles[8], R.drawable.hospital));
 
         drawerList.setAdapter(new DrawerAdapter(this, items));
 
@@ -96,18 +92,12 @@ public class MainActivity extends ActionBarActivity {
                 fragment= new FClinicHistory();
                 break;
             case 4:
-                fragment= new FPersonalHistory();
-                break;
-            case 5:
-                fragment= new FFamilyHistory();
-                break;
-            case 6:
                 fragment= new FAllergy();
                 break;
-            case 7:
+            case 5:
                 fragment= new FDiagnostic();
                 break;
-            case 8:
+            case 6:
                 fragment= new FHomeMeds();
                 break;
 

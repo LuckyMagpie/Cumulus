@@ -9,15 +9,13 @@
     <string name="action_settings">Settings</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="enter" >Enter</string>
+    <string name="enter">Enter</string>
 
     <string-array name="tags">
         <item>Home</item>
         <item>Citas</item>
         <item>Recetas</item>
         <item>Historia Cl\u00EDnica</item>
-        <item>Historia Personal</item>
-        <item>Historia Familiar</item>
         <item>Alergias</item>
         <item>Diagn\u00F3sticos</item>
         <item>Medicamentos</item>
