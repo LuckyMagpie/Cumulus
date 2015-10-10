@@ -21,7 +21,8 @@ public class RVDiagnostics  extends AbstractAdapter {
     @Override
     public void onBindViewHolder(final ItemsViewHolder itemsViewHolder, int i) {
         MDiagnosis diag = (MDiagnosis)(items.get(i));
-        ((TextView)(itemsViewHolder.findViewById(R.id.tvLink))).setText(diag.getNombre());
+        ((TextView)(itemsViewHolder.findViewById(R.id.diagSeveridad))).setText(diag.getNombre());
+        ((TextView)(itemsViewHolder.findViewById(R.id.diagFecha))).setText(diag.getFecha());
     }
 
     @Override

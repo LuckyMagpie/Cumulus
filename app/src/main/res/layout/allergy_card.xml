@@ -33,7 +33,7 @@
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/diagFecha"
+                android:id="@+id/diagReaccion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="6pt"
@@ -44,6 +44,36 @@
                 android:paddingRight="5dp"
                 android:layout_margin="1dp"
                 android:textStyle="italic">
+            </TextView>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_width="match_parent"
+                android:id="@+id/diagTipo"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:layout_margin="1dp"
+                android:capitalize="words"
+                android:textStyle="normal"
+                android:typeface="serif">
+            </TextView>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_width="match_parent"
+                android:id="@+id/diagNombre"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:layout_margin="1dp"
+                android:capitalize="words"
+                android:textStyle="normal"
+                android:typeface="serif">
             </TextView>
 
             <TextView

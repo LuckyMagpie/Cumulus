@@ -8,23 +8,29 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.ecaresoft.cumulus.R;
+import com.ecaresoft.cumulus.components.AbstractAdapter;
+import com.ecaresoft.cumulus.components.AbstractFragment;
+import com.ecaresoft.cumulus.components.diagnostics.RVDiagnostics;
+import com.ecaresoft.cumulus.models.MDiagnosis;
 
 
 /**
  * Created by juanortizjr on 9/10/15.
  */
-public class FAllergy extends Fragment {
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
-        View rootView = inflater.inflate(R.layout.alergias,container,false);
-        setHasOptionsMenu(true);
-        setRetainInstance(true);
-        return rootView;
+public class FAllergy extends AbstractFragment {
+
+    @Override
+    public AbstractAdapter getAdapter() {
+        return new RVDiagnostics(null);
     }
 
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
-        menu.clear();
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
+    @Override
+    public int getRecyclerViewID() {
+        return R.id.rvaler;
     }
 
+    @Override
+    public int getViewID() {
+        return R.layout.alergias;
+    }
 }

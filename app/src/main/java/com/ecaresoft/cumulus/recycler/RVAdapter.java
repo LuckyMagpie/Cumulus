@@ -58,7 +58,7 @@ public class RVAdapter  extends RecyclerView.Adapter<RVAdapter.ItemsViewHolder>{
 
             cv=(CardView)itemView.findViewById(R.id.cv);
             imLink=(ImageView)itemView.findViewById(R.id.imvLink);
-            tvTitle=(TextView)itemView.findViewById(R.id.tvTitle);
+            tvTitle=(TextView)itemView.findViewById(R.id.diagSeveridad);
         }
     }
 

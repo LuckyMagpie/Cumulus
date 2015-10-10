@@ -58,14 +58,14 @@ public class Login extends ActionBarActivity implements View.OnClickListener {
         if(user.getText().toString().trim().equals("") || password.getText().toString().trim().equals("") ){
             tvError.setText(R.string.mensaje_error);
         }else{
-            DataBaseHelper dataBaseHelper=new DataBaseHelper(getApplicationContext());
-            if(dataBaseHelper.selectData(dataBaseHelper,user.getText().toString().trim(),password.getText().toString().trim())) {
-                dataBaseHelper.insertData(dataBaseHelper, user.getText().toString().trim(), password.getText().toString().trim());
+            //DataBaseHelper dataBaseHelper=new DataBaseHelper(getApplicationContext());
+            //if(dataBaseHelper.selectData(dataBaseHelper,user.getText().toString().trim(),password.getText().toString().trim())) {
+                //dataBaseHelper.insertData(dataBaseHelper, user.getText().toString().trim(), password.getText().toString().trim());
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-            }else{
-                tvError.setText(R.string.mensaje_error);
-                }
+           // }else{
+                //tvError.setText(R.string.mensaje_error);
+                //}
             }
         }
     }
