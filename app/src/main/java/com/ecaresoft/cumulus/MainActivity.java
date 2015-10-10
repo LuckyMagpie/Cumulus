@@ -9,7 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v4.widget.DrawerLayout;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -45,27 +48,31 @@ public class MainActivity extends ActionBarActivity {
         tagTitles= getResources().getStringArray(R.array.tags);
 
         View header = getLayoutInflater().inflate(R.layout.header, null);
+        //header.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250));
+        header.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250));
         drawerList.addHeaderView(header);
         addDrawerItems();
-        setupDrawer();
 
+        setupDrawer();
         if (savedInstanceState == null) {
             ShowFragment(0);
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        return ;
     }
 
     private void addDrawerItems() {
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(tagTitles[0], R.drawable.hospital));
         items.add(new Item(tagTitles[1], R.drawable.hospital));
         items.add(new Item(tagTitles[2], R.drawable.hospital));
         items.add(new Item(tagTitles[3], R.drawable.hospital));
         items.add(new Item(tagTitles[4], R.drawable.hospital));
         items.add(new Item(tagTitles[5], R.drawable.hospital));
         items.add(new Item(tagTitles[6], R.drawable.hospital));
+        items.add(new Item(tagTitles[7], R.drawable.hospital));
 
         drawerList.setAdapter(new DrawerAdapter(this, items));
 
@@ -81,28 +88,27 @@ public class MainActivity extends ActionBarActivity {
         android.support.v4.app.Fragment fragment= null;
 
         switch (position){
-            case 0:
+            case 1:
                 fragment= new FHome();
                 break;
-            case 1:
+            case 2:
                 fragment= new FAppointment();
                 break;
-            case 2:
+            case 3:
                 fragment= new FPrescription();
                 break;
-            case 3:
+            case 4:
                 fragment= new FClinicHistory();
                 break;
-            case 4:
+            case 5:
                 fragment= new FAllergy();
                 break;
-            case 5:
+            case 6:
                 fragment= new FDiagnostic();
                 break;
-            case 6:
+            case 7:
                 fragment= new FHomeMeds();
                 break;
-
             default:
                 //
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.abc_action_bar_home_description),Toast.LENGTH_SHORT).show();

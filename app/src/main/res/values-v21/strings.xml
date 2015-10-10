@@ -9,8 +9,10 @@
     <string name="action_settings">Settings</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="user">User</string>
 
     <string-array name="tags">
+        <item>User</item>
         <item>Home</item>
         <item>Citas</item>
         <item>Recetas</item>
