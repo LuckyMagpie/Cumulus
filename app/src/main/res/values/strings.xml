@@ -13,7 +13,7 @@
     <string name="User">User</string>
     <string name="password">Password</string>
     <string name="user">User</string>
-
+    <string name="mensaje_error">*Usuario o contrase\u00F1a incorrecto(s)</string>
     <string-array name="tags">
         <item>User</item>
         <item>Inicio</item>

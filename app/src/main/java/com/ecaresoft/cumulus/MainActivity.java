@@ -12,10 +12,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import java.util.ArrayList;
 import adapter.DrawerAdapter;
 import com.ecaresoft.cumulus.fragments.FAllergy;
@@ -109,8 +107,6 @@ public class MainActivity extends ActionBarActivity {
                 fragment= new FHomeMeds();
                 break;
             default:
-                //
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.abc_action_bar_home_description),Toast.LENGTH_SHORT).show();
                 fragment = new FHome();
                 position =1;
                 break;

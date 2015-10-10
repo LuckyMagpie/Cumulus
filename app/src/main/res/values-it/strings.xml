@@ -9,7 +9,7 @@
     <string name="action_settings">Settings</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-
+    <string name="mensaje_error">*Utente o la password \u00E8 / sono sbagliato</string>
     <string-array name="tags">
         <item>User</item>
         <item>Home</item>

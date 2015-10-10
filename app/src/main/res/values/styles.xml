@@ -8,6 +8,7 @@
         <item name="windowActionBar">false</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="android:editTextStyle">@style/EditTextStyle</item>
+        <item name="android:actionBarItemBackground">@color/white</item>
     </style>
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
