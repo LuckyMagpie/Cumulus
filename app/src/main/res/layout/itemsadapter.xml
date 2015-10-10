@@ -17,7 +17,7 @@
         android:id="@+id/cv"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="12dp"
-        card_view:cardBackgroundColor="@color/colorCard"
+        card_view:cardBackgroundColor="@color/white"
         card_view:contentPaddingTop="-10sp"
         app:cardPreventCornerOverlap="false"
         android:padding="10sp"

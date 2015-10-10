@@ -38,7 +38,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -66,12 +65,12 @@ public class MainActivity extends ActionBarActivity {
 
     private void addDrawerItems() {
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(tagTitles[1], R.drawable.hospital));
-        items.add(new Item(tagTitles[2], R.drawable.hospital));
-        items.add(new Item(tagTitles[3], R.drawable.hospital));
-        items.add(new Item(tagTitles[4], R.drawable.hospital));
+        items.add(new Item(tagTitles[1], R.drawable.eventos));
+        items.add(new Item(tagTitles[2], R.drawable.receta));
+        items.add(new Item(tagTitles[3], R.drawable.historial));
+        items.add(new Item(tagTitles[4], R.drawable.alergias));
         items.add(new Item(tagTitles[5], R.drawable.hospital));
-        items.add(new Item(tagTitles[6], R.drawable.hospital));
+        items.add(new Item(tagTitles[6], R.drawable.medica));
         items.add(new Item(tagTitles[7], R.drawable.hospital));
 
         drawerList.setAdapter(new DrawerAdapter(this, items));

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="back" type="color">#fff</item>
-    <item name="white" type="color">#f2f2f2</item>
-    <item name="black" type="color">#000</item>
-    <item name="draw" type="color">#5BDEA3</item>
-    <item name="txtBack" type="color">#EBF7F2</item>
-    <item name="colorList" type="color">#EAF2EC</item>
-    <color name="primaryColor">#5BDEA3</color>
-    <color name="primaryColorDark">#4DAB81</color>
-    <color name="colorCard" type="color">#E6F0EA</color>
+    <item name="colorPrimary" type="color">#5687a8</item>
+    <item name="colorPrimaryDark" type="color">#416985</item>
+    <item name="drawer_color" type="color">#6C93CD</item>
+    <item name="text_color" type="color">#f2f2f2</item>
 </resources>
