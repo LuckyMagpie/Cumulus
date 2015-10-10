@@ -24,6 +24,11 @@ import com.ecaresoft.cumulus.fragments.FHome;
 import com.ecaresoft.cumulus.fragments.FHomeMeds;
 import com.ecaresoft.cumulus.fragments.FPrescription;
 import com.ecaresoft.cumulus.models.Item;
+import com.ecaresoft.cumulus.models.MEMR;
+import com.ecaresoft.cumulus.request.JSONRequest;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
 
 public class MainActivity extends ActionBarActivity {
     private ListView drawerList;
@@ -31,6 +36,8 @@ public class MainActivity extends ActionBarActivity {
     private ActionBarDrawerToggle drawerToggle;
     private String[] tagTitles;
     private RelativeLayout layout;
+
+    MEMR emr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,14 @@ public class MainActivity extends ActionBarActivity {
             ShowFragment(0);
         }
 
+        try {
+            String json = JSONRequest.GET("http://192.168.11.190:8000/pacientes/1/");
+            Gson gson = new Gson();
+            emr = gson.fromJson(json, MEMR.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -63,16 +78,15 @@ public class MainActivity extends ActionBarActivity {
 
     private void addDrawerItems() {
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(tagTitles[1], R.drawable.eventos));
-        items.add(new Item(tagTitles[2], R.drawable.receta));
-        items.add(new Item(tagTitles[3], R.drawable.historial));
-        items.add(new Item(tagTitles[4], R.drawable.alergias));
-        items.add(new Item(tagTitles[5], R.drawable.hospital));
-        items.add(new Item(tagTitles[6], R.drawable.medica));
-        items.add(new Item(tagTitles[7], R.drawable.hospital));
+        items.add(new Item(tagTitles[1], R.drawable.home));
+        items.add(new Item(tagTitles[2], R.drawable.eventos));
+        items.add(new Item(tagTitles[3], R.drawable.receta));
+        items.add(new Item(tagTitles[4], R.drawable.historial));
+        items.add(new Item(tagTitles[5], R.drawable.alergias));
+        items.add(new Item(tagTitles[6], R.drawable.diagnostico));
+        items.add(new Item(tagTitles[7], R.drawable.medica));
 
         drawerList.setAdapter(new DrawerAdapter(this, items));
-
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -89,22 +103,22 @@ public class MainActivity extends ActionBarActivity {
                 fragment= new FHome();
                 break;
             case 2:
-                fragment= new FAppointment();
+                fragment= new FAppointment(emr.getEventos());
                 break;
             case 3:
-                fragment= new FPrescription();
+                fragment= new FPrescription(emr.getMedicamentos());
                 break;
             case 4:
-                fragment= new FClinicHistory();
+                fragment= new FClinicHistory(emr.getHistoria());
                 break;
             case 5:
-                fragment= new FAllergy();
+                fragment= new FAllergy(emr.getAlergias());
                 break;
             case 6:
-                fragment= new FDiagnostic();
+                fragment= new FDiagnostic(emr.getDiagnosticos());
                 break;
             case 7:
-                fragment= new FHomeMeds();
+                fragment= new FHomeMeds(emr.getMedicamentos());
                 break;
             default:
                 fragment = new FHome();
