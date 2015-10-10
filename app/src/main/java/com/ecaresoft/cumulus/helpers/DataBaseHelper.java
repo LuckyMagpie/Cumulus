@@ -46,6 +46,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         dop.close();
     }
 
+    public void insert(DataBaseHelper dop){
+        SQLiteDatabase sq=dop.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(Table.TableInfo.user,"superuser");
+        cv.put(Table.TableInfo.password,"NOMBRECOMPLETO");
+        long k=sq.insert(Table.TableInfo.table_name, null, cv);
+    }
     //Metodo para verificar si el usuario y contraseña son correcto
     public boolean selectData(DataBaseHelper dop, String user, String password){
         SQLiteDatabase sq=dop.getWritableDatabase();
