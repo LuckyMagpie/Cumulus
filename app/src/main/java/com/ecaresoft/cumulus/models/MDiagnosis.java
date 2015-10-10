@@ -1,5 +1,8 @@
 package com.ecaresoft.cumulus.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by erodriguez on 09/10/2015.
  */
@@ -10,6 +13,19 @@ public class MDiagnosis {
     private String nombre;
 
     public MDiagnosis(){}
+
+    public static List<MDiagnosis> getMDiagnosis(){
+        List<MDiagnosis> diag = new ArrayList<>();
+        for(int i = 0; i < 5; i++){
+            MDiagnosis d = new MDiagnosis();
+            d.setCodigo("codigo"+i);
+            d.setEvento("event"+i);
+            d.setFecha("0"+i+"/09/2015");
+            d.setNombre("Cirujia No."+i);
+            diag.add(d);
+        }
+        return diag;
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

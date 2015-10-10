@@ -31,7 +31,7 @@ public class RVAdapter  extends RecyclerView.Adapter<RVAdapter.ItemsViewHolder>{
     @Override
     public void onBindViewHolder(final ItemsViewHolder itemsViewHolder, int i) {
         itemsViewHolder.tvTitle.setText(items.get(i).getTitle());
-        itemsViewHolder.tvLink.setText(items.get(i).getLink());
+        ((TextView)itemsViewHolder.itemView.findViewById(R.id.tvLink)).setText(items.get(i).getLink());
     }
 
     @Override
@@ -50,13 +50,14 @@ public class RVAdapter  extends RecyclerView.Adapter<RVAdapter.ItemsViewHolder>{
     public static class ItemsViewHolder extends RecyclerView.ViewHolder{
         CardView cv;
         ImageView imLink;
-        TextView tvLink,tvTitle;
+        TextView tvTitle;
+
 
         ItemsViewHolder(View itemView){
             super(itemView);
+
             cv=(CardView)itemView.findViewById(R.id.cv);
             imLink=(ImageView)itemView.findViewById(R.id.imvLink);
-            tvLink=(TextView)itemView.findViewById(R.id.tvLink);
             tvTitle=(TextView)itemView.findViewById(R.id.tvTitle);
         }
     }
