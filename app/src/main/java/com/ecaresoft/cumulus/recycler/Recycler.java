@@ -26,16 +26,12 @@ public class Recycler extends Activity {
         rv.setHasFixedSize(true);
         LinearLayoutManager llm=new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(llm);
-        init();
         RVAdapter adapter=new RVAdapter(items);
         rv.setAdapter(adapter);
     }
 
     private void init(){
-        items=new ArrayList<>();
-        //persons.add(new Person("Juan Ortiz","20 years old",R.drawable.person));
-        //persons.add(new Person("Juan Ortiz","20 years old",R.drawable.person));
-        //persons.add(new Person("Juan Ortiz","20 years old",R.drawable.person));
+
     }
 
     @Override

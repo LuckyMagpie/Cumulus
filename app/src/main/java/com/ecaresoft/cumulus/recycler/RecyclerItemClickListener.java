@@ -6,7 +6,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
+public class RecyclerItemClickListener {}
+        /*implements RecyclerView.OnItemTouchListener {
     public static interface OnItemClickListener {
         public void onItemClick(View view, int position);
         public void onItemLongClick(View view, int position);
@@ -49,3 +50,4 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
     @Override
     public void onTouchEvent(RecyclerView view, MotionEvent motionEvent){}
 }
+*/
