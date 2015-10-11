@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ecaresoft.cumulus.R;
+import com.ecaresoft.cumulus.components.AbstractEMRSection;
+import com.ecaresoft.cumulus.components.ItemsViewHolder;
 import com.ecaresoft.cumulus.models.MEvent;
 
 import java.util.List;
@@ -16,25 +18,29 @@ import java.util.List;
 /**
  * Created by juanortizjr on 9/10/15.
  */
-public class FAppointment extends Fragment {
-
-    List<MEvent> events;
-
-    public FAppointment(List<MEvent> evt){
-        super();
-        events = evt;
+public class FAppointment extends AbstractEMRSection<MEvent> {
+    @Override
+    public int getRecyclerViewID() {
+        return 0;
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
-        View rootView = inflater.inflate(R.layout.citas,container,false);
-        setHasOptionsMenu(true);
-        setRetainInstance(true);
-        return rootView;
+    @Override
+    public int getSectionViewID() {
+        return R.layout.citas;
     }
 
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
-        menu.clear();
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
+    @Override
+    public List<MEvent> getResult() {
+        return MEvent.getEvents(getContext());
+    }
+
+    @Override
+    public void render(ItemsViewHolder item, int index, MEvent object) {
+
+    }
+
+    @Override
+    public int getCardLayoutID() {
+        return 0;
     }
 }

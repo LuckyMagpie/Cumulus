@@ -9,21 +9,38 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ecaresoft.cumulus.R;
+import com.ecaresoft.cumulus.components.AbstractEMRSection;
+import com.ecaresoft.cumulus.components.ItemsViewHolder;
+import com.ecaresoft.cumulus.models.MHomeMed;
+
+import java.util.List;
 
 /**
  * Created by juanortizjr on 9/10/15.
  */
-public class FHomeMeds extends Fragment {
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
-        View rootView = inflater.inflate(R.layout.medicamentos,container,false);
-        setHasOptionsMenu(true);
-        setRetainInstance(true);
-        return rootView;
+public class FHomeMeds extends AbstractEMRSection<MHomeMed> {
+    @Override
+    public int getRecyclerViewID() {
+        return 0;
     }
 
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
-        menu.clear();
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
+    @Override
+    public int getSectionViewID() {
+        return R.layout.medicamentos;
+    }
+
+    @Override
+    public List<MHomeMed> getResult() {
+        return MHomeMed.getMedications(getContext());
+    }
+
+    @Override
+    public void render(ItemsViewHolder item, int index, MHomeMed object) {
+
+    }
+
+    @Override
+    public int getCardLayoutID() {
+        return 0;
     }
 }

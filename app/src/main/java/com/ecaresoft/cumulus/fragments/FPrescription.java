@@ -9,21 +9,39 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ecaresoft.cumulus.R;
+import com.ecaresoft.cumulus.components.AbstractEMRSection;
+import com.ecaresoft.cumulus.components.ItemsViewHolder;
+import com.ecaresoft.cumulus.models.MPrescription;
+
+import java.util.List;
 
 /**
  * Created by juanortizjr on 9/10/15.
  */
-public class FPrescription extends Fragment {
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
-        View rootView = inflater.inflate(R.layout.recetas,container,false);
-        setHasOptionsMenu(true);
-        setRetainInstance(true);
-        return rootView;
+public class FPrescription extends AbstractEMRSection<MPrescription> {
+
+    @Override
+    public int getRecyclerViewID() {
+        return 0;
     }
 
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
-        menu.clear();
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
+    @Override
+    public int getSectionViewID() {
+        return R.layout.recetas;
+    }
+
+    @Override
+    public List<MPrescription> getResult() {
+        return MPrescription.getPrescriptions(getContext());
+    }
+
+    @Override
+    public void render(ItemsViewHolder item, int index, MPrescription object) {
+
+    }
+
+    @Override
+    public int getCardLayoutID() {
+        return 0;
     }
 }

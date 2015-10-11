@@ -4,19 +4,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ecaresoft.cumulus.R;
+import com.ecaresoft.cumulus.models.MDiagnosis;
 
 import java.util.List;
 
 /**
  * Created by erodriguez on 10/10/2015.
  */
-public abstract class AbstractAdapter extends RecyclerView.Adapter<ItemsViewHolder> {
+public class EMRAdapter extends RecyclerView.Adapter<ItemsViewHolder> {
     protected List<? extends Object> items;
+    protected AbstractEMRSection parent;
 
-    public AbstractAdapter(List<? extends Object> items){
-        this.items=items;
+    public EMRAdapter(AbstractEMRSection parent, List<? extends Object> items){
+        this.items = items;
+        this.parent = parent;
     }
 
     @Override
@@ -39,6 +43,13 @@ public abstract class AbstractAdapter extends RecyclerView.Adapter<ItemsViewHold
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public abstract int getViewID();
+    @Override
+    public void onBindViewHolder(final ItemsViewHolder itemsViewHolder, int i) {
+        parent.render(itemsViewHolder, i, items.get(i));
+    }
+
+    public int getViewID() {
+        return parent.getCardLayoutID();
+    }
 
 }

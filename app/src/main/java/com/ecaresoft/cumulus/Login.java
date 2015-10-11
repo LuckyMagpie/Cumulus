@@ -1,23 +1,17 @@
 package com.ecaresoft.cumulus;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.ecaresoft.cumulus.helpers.DataBaseHelper;
-import com.ecaresoft.cumulus.request.JSONRequest;
+import com.ecaresoft.cumulus.helpers.database.DataBaseHelper;
 
 /**
  * Created by dsolano on 9/10/15.
@@ -27,29 +21,35 @@ public class Login extends ActionBarActivity implements View.OnClickListener {
     private EditText user;
     private EditText password;
     private TextView tvError;
+    private TextView registro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
-        enter=(Button)findViewById(R.id.enter);
-        user=(EditText)findViewById(R.id.user);
-        tvError=(TextView)findViewById(R.id.tvError);
-        password=(EditText) findViewById(R.id.password);
-        enter.setOnClickListener(this);
 
-        /*
-        DESCOMENTAR LA PRIMERA VEZ PARA AGREGAR USUARIO
-        DataBaseHelper dataBaseHelper=new DataBaseHelper(getApplicationContext());
-        dataBaseHelper.insert(dataBaseHelper);*/
-      /*  if(isConnected()){
-            System.out.println("CONNECTED");
+        //Si hay una session activa no se inicia el login
+        if(DataBaseHelper.getSession(getApplicationContext()) > 0){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            setContentView(R.layout.login);
+            enter=(Button)findViewById(R.id.enter);
+            user=(EditText)findViewById(R.id.user);
+            registro=(TextView)findViewById(R.id.registrarse);
+            tvError=(TextView)findViewById(R.id.tvError);
+            password=(EditText) findViewById(R.id.password);
+            enter.setOnClickListener(this);
+            registro.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tvError.setText("");
+                    if (!user.getText().toString().trim().equals("") && !password.getText().toString().trim().equals("")) {
+                        DataBaseHelper.setDummyRegistry(getApplicationContext(), user.getText().toString(), password.getText().toString());
+                        tvError.setText("Se ha creado el registro");
+                    }
+                }
+            });
         }
-        else{
-            System.out.println("You are not connected");
-        }
-        new HttpAsyncTask().execute("http://192.168.11.190:8000/pacientes/1/");*/
-        JSONRequest jsonRequest= new JSONRequest("http://192.168.11.190:8000/pacientes/1/");
     }
 
 
@@ -73,66 +73,14 @@ public class Login extends ActionBarActivity implements View.OnClickListener {
     * */
     @Override
     public void onClick(View view) {
-        if(user.getText().toString().trim().equals("") || password.getText().toString().trim().equals("") ){
+        tvError.setText("");
+        if (user.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")) {
             tvError.setText(R.string.mensaje_error);
-        }else{
-            //DataBaseHelper dataBaseHelper=new DataBaseHelper(getApplicationContext());
-            //if(dataBaseHelper.selectData(dataBaseHelper,user.getText().toString().trim(),password.getText().toString().trim())) {
-                //dataBaseHelper.insertData(dataBaseHelper, user.getText().toString().trim(), password.getText().toString().trim());
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-           // }else{
-                //tvError.setText(R.string.mensaje_error);
-                //}
-            }
+        } else if (DataBaseHelper.getLogin(getApplicationContext(), user.getText().toString(), password.getText().toString()) > 0) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            tvError.setText("Datos incorrectos. Favor de verificar haberse dado de alta en el dispositivo asi como su usuario y contraseña.");
         }
-/*
-    public static String GET(String url){
-        InputStream inputStream = null;
-        String result = "";
-        try {
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
-            inputStream = httpResponse.getEntity().getContent();
-            if(inputStream != null)
-                result = convertInputStreamToString(inputStream);
-            else
-                result = "Did not work!";
-
-        } catch (Exception e) {
-            Log.d("InputStream", e.getLocalizedMessage());
-        }
-        return result;
     }
-
-    private static String convertInputStreamToString(InputStream inputStream) throws IOException{
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
-        String line = "";
-        String result = "";
-        while((line = bufferedReader.readLine()) != null)
-            result += line;
-        inputStream.close();
-        return result;
-    }
-
-    public boolean isConnected(){
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-            return true;
-        else
-            return false;
-    }
-    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-            return GET(urls[0]);
-        }
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(String result) {
-            Toast.makeText(getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
-            Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
-        }
-    }*/
 }

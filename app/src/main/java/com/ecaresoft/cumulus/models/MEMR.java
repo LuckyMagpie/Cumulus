@@ -1,9 +1,9 @@
 package com.ecaresoft.cumulus.models;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.ecaresoft.cumulus.components.AbstractServiceModel;
 
+import java.math.MathContext;
 import java.util.List;
 
 /**
@@ -11,87 +11,31 @@ import java.util.List;
  * Created by erodriguez on 09/10/2015.
  */
 public class MEMR {
-    private String paciente;
-    private List<MEvent> eventos;
-    private List<MPrescription> recetas;
-    private List<MAllergy> alergias;
-    private List<MDiagnosis> diagnosticos;
-    private List<MInterventions> intervenciones;
-    private List<MHomeMed> medicamentos;
-    private List<MVitalSign> signos;
-    private List<MHistory> historia;
 
-    public MEMR()  {}
+    private Context ctx;
+    private int userID;
 
-    public void setPaciente(String paciente) {
-        this.paciente = paciente;
+    Object[] objLts = new Object[]{
+            new MEvent(),
+            new MPrescription(),
+            new MAllergy(),
+            new MDiagnosis(),
+            new MInterventions(),
+            new MHomeMed(),
+            new MVitalSign(),
+            new MHistory()
+    };
+
+    public MEMR(Context ctx, int userID){
+        this.ctx = ctx;
+        this.userID = userID;
     }
 
-    public String getPaciente() {
-        return paciente;
-    }
-
-    public void setAlergias(List<MAllergy> alergias) {
-        this.alergias = alergias;
-    }
-
-    public List<MAllergy> getAlergias() {
-        return alergias;
-    }
-
-    public void setDiagnosticos(List<MDiagnosis> diagnosticos) {
-        this.diagnosticos = diagnosticos;
-    }
-
-    public List<MDiagnosis> getDiagnosticos() {
-        return diagnosticos;
-    }
-
-    public void setEventos(List<MEvent> eventos) {
-        this.eventos = eventos;
-    }
-
-    public List<MEvent> getEventos() {
-        return eventos;
-    }
-
-    public void setHistoria(List<MHistory> historia) {
-        this.historia = historia;
-    }
-
-    public List<MHistory> getHistoria() {
-        return historia;
-    }
-
-    public void setIntervenciones(List<MInterventions> intervenciones) {
-        this.intervenciones = intervenciones;
-    }
-
-    public List<MInterventions> getIntervenciones() {
-        return intervenciones;
-    }
-
-    public void setMedicamentos(List<MHomeMed> medicamentos) {
-        this.medicamentos = medicamentos;
-    }
-
-    public List<MHomeMed> getMedicamentos() {
-        return medicamentos;
-    }
-
-    public void setRecetas(List<MPrescription> recetas) {
-        this.recetas = recetas;
-    }
-
-    public List<MPrescription> getRecetas() {
-        return recetas;
-    }
-
-    public void setSignos(List<MVitalSign> signos) {
-        this.signos = signos;
-    }
-
-    public List<MVitalSign> getSignos() {
-        return signos;
+    public void updtate(){
+        for (Object obj: objLts) {
+            if(obj instanceof AbstractServiceModel){
+                ((AbstractServiceModel)obj).reload(ctx, userID);
+            }
+        }
     }
 }

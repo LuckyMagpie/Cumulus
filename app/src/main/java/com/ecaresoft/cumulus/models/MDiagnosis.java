@@ -1,12 +1,22 @@
 package com.ecaresoft.cumulus.models;
 
+
+import android.content.Context;
+
+import com.ecaresoft.cumulus.components.AbstractServiceModel;
+import com.ecaresoft.cumulus.helpers.database.DataBaseHelper;
+import com.ecaresoft.cumulus.helpers.server.JSONRequest;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by erodriguez on 09/10/2015.
  */
-public class MDiagnosis {
+public class MDiagnosis extends AbstractServiceModel {
     private String evento;
     private String fecha;
     private String codigo;
@@ -16,31 +26,29 @@ public class MDiagnosis {
 
     public MDiagnosis(){}
 
-    public static List<MDiagnosis> getMDiagnosis(){
-        List<MDiagnosis> diag = new ArrayList<>();
+    public static String DIAGNOSIS_SECTION = "diagnosticos";
 
-        MDiagnosis d = new MDiagnosis();
-        d.setCodigo("L50.0");
-        d.setEvento(null);
-        d.setFecha("1985-01-23T06:40:06Z");
-        d.setNombre("Urticaria alergica");
-        diag.add(d);
+    @Override
+    protected String sectionName() {
+        return DIAGNOSIS_SECTION;
+    }
 
-        d = new MDiagnosis();
-        d.setCodigo("L50.0");
-        d.setEvento(null);
-        d.setFecha("1985-01-23T06:40:06Z");
-        d.setNombre("Dolor de garganta y en el pecho");
-        diag.add(d);
+    public static List<MDiagnosis> getDiagnosis(Context ctx){
+        List<MDiagnosis> diagnosticos = null;
 
-        d = new MDiagnosis();
-        d.setCodigo("L50.0");
-        d.setEvento(null);
-        d.setFecha("1985-01-23T06:40:06Z");
-        d.setNombre("Litiasis de los conductos biliares con colangitis o colecistitis");
-        diag.add(d);
+        try{
+            //Obtener Json del usuario
+            int userID = DataBaseHelper.getSession(ctx);
+            String json = DataBaseHelper.getSection(ctx, userID, DIAGNOSIS_SECTION);
 
-        return diag;
+            //Parsear Json a Objeto
+            final Type tipo = new TypeToken<List<MDiagnosis>>(){}.getType();
+            Gson gson = new Gson();
+            diagnosticos = gson.fromJson(json, tipo);
+        } catch (Exception e){}
+
+        //Retornar List<Object>
+        return diagnosticos;
     }
 
     public void setNombre(String nombre) {

@@ -1,22 +1,18 @@
 package com.ecaresoft.cumulus.fragments;
 
-import android.view.View;
+import android.widget.TextView;
 
 import com.ecaresoft.cumulus.R;
-import com.ecaresoft.cumulus.components.AbstractAdapter;
-import com.ecaresoft.cumulus.components.AbstractFragment;
-import com.ecaresoft.cumulus.components.diagnostics.RVDiagnostics;
+import com.ecaresoft.cumulus.components.AbstractEMRSection;
+import com.ecaresoft.cumulus.components.ItemsViewHolder;
 import com.ecaresoft.cumulus.models.MDiagnosis;
+
+import java.util.List;
 
 /**
  * Created by juanortizjr on 9/10/15.
  */
-public class FDiagnostic extends AbstractFragment {
-
-    @Override
-    public AbstractAdapter getAdapter() {
-        return new RVDiagnostics(MDiagnosis.getMDiagnosis());
-    }
+public class FDiagnostic extends AbstractEMRSection<MDiagnosis> {
 
     @Override
     public int getRecyclerViewID() {
@@ -24,7 +20,23 @@ public class FDiagnostic extends AbstractFragment {
     }
 
     @Override
-    public int getViewID() {
+    public int getSectionViewID() {
         return R.layout.diagnosticos;
+    }
+
+    @Override
+    public int getCardLayoutID() {
+        return R.layout.diagnosis_card;
+    }
+
+    @Override
+    public List<MDiagnosis> getResult(){
+        return MDiagnosis.getDiagnosis(getContext());
+    }
+
+    @Override
+    public void render(ItemsViewHolder item, int index, MDiagnosis object) {
+        ((TextView)(item.findViewById(R.id.diagSeveridad))).setText(object.getNombre());
+        ((TextView)(item.findViewById(R.id.diagFecha))).setText(object.getFecha());
     }
 }

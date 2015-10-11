@@ -23,12 +23,9 @@ import com.ecaresoft.cumulus.fragments.FClinicHistory;
 import com.ecaresoft.cumulus.fragments.FHome;
 import com.ecaresoft.cumulus.fragments.FHomeMeds;
 import com.ecaresoft.cumulus.fragments.FPrescription;
+import com.ecaresoft.cumulus.helpers.database.DataBaseHelper;
 import com.ecaresoft.cumulus.models.Item;
 import com.ecaresoft.cumulus.models.MEMR;
-import com.ecaresoft.cumulus.request.JSONRequest;
-import com.google.gson.Gson;
-
-import org.json.JSONException;
 
 public class MainActivity extends ActionBarActivity {
     private ListView drawerList;
@@ -36,8 +33,6 @@ public class MainActivity extends ActionBarActivity {
     private ActionBarDrawerToggle drawerToggle;
     private String[] tagTitles;
     private RelativeLayout layout;
-
-    MEMR emr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
         if (savedInstanceState == null) {
             ShowFragment(0);
         }
-
+    /*
         try {
             String json = JSONRequest.GET("http://192.168.11.190:8000/pacientes/1/");
             Gson gson = new Gson();
@@ -69,6 +64,9 @@ public class MainActivity extends ActionBarActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        */
+        MEMR emr = new MEMR(getApplicationContext(), DataBaseHelper.getSession(getApplicationContext()));
+        emr.updtate();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -103,22 +101,22 @@ public class MainActivity extends ActionBarActivity {
                 fragment= new FHome();
                 break;
             case 2:
-                fragment= new FAppointment(emr.getEventos());
+                fragment= new FAppointment();
                 break;
             case 3:
-                fragment= new FPrescription(emr.getMedicamentos());
+                fragment= new FPrescription();
                 break;
             case 4:
-                fragment= new FClinicHistory(emr.getHistoria());
+                fragment= new FClinicHistory();
                 break;
             case 5:
-                fragment= new FAllergy(emr.getAlergias());
+                fragment= new FAllergy();
                 break;
             case 6:
-                fragment= new FDiagnostic(emr.getDiagnosticos());
+                fragment= new FDiagnostic();
                 break;
             case 7:
-                fragment= new FHomeMeds(emr.getMedicamentos());
+                fragment= new FHomeMeds();
                 break;
             default:
                 fragment = new FHome();

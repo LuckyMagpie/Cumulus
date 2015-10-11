@@ -9,21 +9,39 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ecaresoft.cumulus.R;
+import com.ecaresoft.cumulus.components.AbstractEMRSection;
+import com.ecaresoft.cumulus.components.ItemsViewHolder;
+import com.ecaresoft.cumulus.models.MHistory;
+
+import java.util.List;
 
 /**
  * Created by juanortizjr on 9/10/15.
  */
-public class FClinicHistory extends Fragment {
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
-        View rootView = inflater.inflate(R.layout.historia_clinica,container,false);
-        setHasOptionsMenu(true);
-        setRetainInstance(true);
-        return rootView;
+public class FClinicHistory extends AbstractEMRSection<MHistory> {
+
+    @Override
+    public int getRecyclerViewID() {
+        return 0;
     }
 
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
-        menu.clear();
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
+    @Override
+    public int getSectionViewID() {
+        return R.layout.historia_clinica;
+    }
+
+    @Override
+    public List<MHistory> getResult() {
+        return MHistory.getHistory(getContext());
+    }
+
+    @Override
+    public void render(ItemsViewHolder item, int index, MHistory object) {
+
+    }
+
+    @Override
+    public int getCardLayoutID() {
+        return 0;
     }
 }

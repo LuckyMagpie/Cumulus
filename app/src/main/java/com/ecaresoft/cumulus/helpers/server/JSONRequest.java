@@ -1,12 +1,19 @@
-package com.ecaresoft.cumulus.request;
+package com.ecaresoft.cumulus.helpers.server;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.ecaresoft.cumulus.helpers.database.DataBaseHelper;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,10 +23,6 @@ import java.io.InputStreamReader;
  * Created by juanortizjr on 10/10/15.
  */
 public class JSONRequest {
-
-    public JSONRequest(String url){
-        new HttpAsyncTask().execute(url);
-    }
 
     public static String GET(String url) throws JSONException {
         InputStream inputStream = null;
@@ -62,21 +65,4 @@ public class JSONRequest {
         else
             return false;
     }*/
-    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-            try {
-                return GET(urls[0]);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(String result) {
-            /*Toast.makeText(getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
-            Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();*/
-        }
-    }
 }

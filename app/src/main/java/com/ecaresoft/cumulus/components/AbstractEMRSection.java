@@ -17,12 +17,11 @@ import java.util.List;
 /**
  * Created by erodriguez on 09/10/2015.
  */
-public abstract class AbstractFragment extends Fragment {
+public abstract class AbstractEMRSection<T extends Object> extends Fragment {
     RecyclerView rv;
-    List<Object> items;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
-        View rootView = inflater.inflate(getViewID(),container,false);
+        View rootView = inflater.inflate(getSectionViewID(),container,false);
         setHasOptionsMenu(true);
         setRetainInstance(true);
 
@@ -32,12 +31,12 @@ public abstract class AbstractFragment extends Fragment {
         return rootView;
     }
 
-    public void getCard(View rootView){
+    private void getCard(View rootView){
         rv=(RecyclerView)rootView.findViewById(getRecyclerViewID());
         rv.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity().getApplicationContext());
         rv.setLayoutManager(llm);
-        AbstractAdapter adapter = getAdapter();
+        EMRAdapter adapter = new EMRAdapter(this, getResult());
         rv.setAdapter(adapter);
     }
 
@@ -49,7 +48,11 @@ public abstract class AbstractFragment extends Fragment {
 
     public abstract int getRecyclerViewID();
 
-    public abstract AbstractAdapter getAdapter();
+    public abstract int getSectionViewID();
 
-    public abstract int getViewID();
+    public abstract List<T> getResult();
+
+    public abstract void render(ItemsViewHolder item, int index, T object);
+
+    public abstract int getCardLayoutID();
 }
