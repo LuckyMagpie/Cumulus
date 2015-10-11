@@ -10,6 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Clase para actualizar la informacion en segundo plano usando hilos
+ * Actualiza en base de datos
+ */
 public class SectionAsyncTask extends AsyncTask<String, Void, String> {
 
     public static String SERVER_URL = "http://192.168.0.4/pacientes/"; //"http://192.168.11.190:8000/pacientes/";
@@ -25,6 +29,11 @@ public class SectionAsyncTask extends AsyncTask<String, Void, String> {
         this.execute(SERVER_URL + userID + "/" + section);
     }
 
+    /**
+     * Metodo que llama la consutlta del servidor en segundo plano
+     * @param strings
+     * @return
+     */
     @Override
     protected String doInBackground(String... strings) {
         try {
@@ -35,6 +44,11 @@ public class SectionAsyncTask extends AsyncTask<String, Void, String> {
         return null;
     }
 
+    /**
+     * Se ejecuta despues de resibir la información del servidor
+     * Actualiza la base de datos con la información que recibio
+     * @param result
+     */
     @Override
     protected void onPostExecute(String result) {
         if(validateJson(result)){
@@ -42,6 +56,11 @@ public class SectionAsyncTask extends AsyncTask<String, Void, String> {
         }
     }
 
+    /**
+     * Valida que el archivo recibido sea un Json
+     * @param json
+     * @return true si es Json o false en caso contrario
+     */
     public boolean validateJson(String json){
         try {
             new JSONObject(json);
