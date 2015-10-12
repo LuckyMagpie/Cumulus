@@ -139,13 +139,13 @@ public class MainActivity extends ActionBarActivity {
     private void setupDrawer() {
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
-            /** Called when a drawer has settled in a completely open state. */
+            /*Metodo llamado cuando es abierto el navigation drawer*/
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
 
             }
 
-            /** Called when a drawer has settled in a completely closed state. */
+            /** Se llama cuando es completamente cerrado el navigation drawer. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
 
@@ -160,7 +160,6 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
         drawerToggle.syncState();
     }
 
@@ -172,24 +171,18 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the FHome/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
+        
         if (id == R.id.action_settings) {
             return true;
         }
 
-        // Activate the navigation drawer toggle
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
