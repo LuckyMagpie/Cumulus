@@ -1,189 +1,144 @@
 package com.ecaresoft.cumulus;
 
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.support.v4.widget.DrawerLayout;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import java.util.ArrayList;
-import adapter.DrawerAdapter;
+
 import com.ecaresoft.cumulus.fragments.FAllergy;
 import com.ecaresoft.cumulus.fragments.FAppointment;
-import com.ecaresoft.cumulus.fragments.FDiagnostic;
 import com.ecaresoft.cumulus.fragments.FClinicHistory;
+import com.ecaresoft.cumulus.fragments.FDiagnostic;
 import com.ecaresoft.cumulus.fragments.FHome;
 import com.ecaresoft.cumulus.fragments.FHomeMeds;
 import com.ecaresoft.cumulus.fragments.FPrescription;
-import com.ecaresoft.cumulus.helpers.database.DataBaseHelper;
-import com.ecaresoft.cumulus.models.Item;
-import com.ecaresoft.cumulus.models.MEMR;
 
-public class MainActivity extends ActionBarActivity {
-    private ListView drawerList;
+public class MainActivity extends AppCompatActivity {
+
+    //Defining Variables
+    private Toolbar toolbar;
+    private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle drawerToggle;
-    private String[] tagTitles;
-    private RelativeLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+
+        int[][] states = new int[][] {
+                new int[] {android.R.attr.state_checked},
+                new int[] {-android.R.attr.state_checked},
+
+        };
+        int[] colors = new int[] {
+                Color.rgb(0, 164, 147   ),
+                Color.rgb(112,121,122)
+        };
+        ColorStateList colorStateList=new ColorStateList(states,colors);
+
+        // Initializing Toolbar and setting it as the actionbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        layout=(RelativeLayout)findViewById(R.id.layout);
-        drawerList = (ListView)findViewById(R.id.nav);
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
-        tagTitles= getResources().getStringArray(R.array.tags);
+        //Initializing NavigationView
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setItemTextColor(colorStateList);
+        navigationView.setItemIconTintList(colorStateList);
+        //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
-        View header = getLayoutInflater().inflate(R.layout.header, null);
-        //header.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250));
-        header.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250));
-        drawerList.addHeaderView(header);
-        addDrawerItems();
-
-        setupDrawer();
-        if (savedInstanceState == null) {
-            ShowFragment(0);
-        }
-    /*
-        try {
-            String json = JSONRequest.GET("http://192.168.11.190:8000/pacientes/1/");
-            Gson gson = new Gson();
-            emr = gson.fromJson(json, MEMR.class);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        */
-        MEMR emr = new MEMR(getApplicationContext(), DataBaseHelper.getSession(getApplicationContext()));
-        emr.updtate();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
-        return ;
-    }
-
-    private void addDrawerItems() {
-        ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(tagTitles[1], R.drawable.home));
-        items.add(new Item(tagTitles[2], R.drawable.eventos));
-        items.add(new Item(tagTitles[3], R.drawable.receta));
-        items.add(new Item(tagTitles[4], R.drawable.historial));
-        items.add(new Item(tagTitles[5], R.drawable.alergias));
-        items.add(new Item(tagTitles[6], R.drawable.diagnostico));
-        items.add(new Item(tagTitles[7], R.drawable.medica));
-
-        drawerList.setAdapter(new DrawerAdapter(this, items));
-        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            // This method will trigger on item Click of navigation menu
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                ShowFragment(i);
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                //Checking if the item is in checked state or not, if not make it in checked state
+                if(menuItem.isChecked()) menuItem.setChecked(false);
+                else menuItem.setChecked(true);
+
+                //Closing drawer on item click
+                drawerLayout.closeDrawers();
+                android.support.v4.app.Fragment fragment= null;
+                //Check to see which item was being clicked and perform appropriate action
+                switch (menuItem.getItemId()){
+
+                     //Replacing the main content with ContentFragment Which is our Inbox View;
+                    case R.id.home:
+                        fragment= new FHome();
+                        return true;
+                    case R.id.citas:
+                        fragment= new FAppointment();
+                        return true;
+                    case R.id.recetas:
+                        fragment= new FPrescription();
+                        return true;
+                    case R.id.historia:
+                        fragment= new FClinicHistory();
+                        return true;
+                    case R.id.alergias:
+                        fragment= new FAllergy();
+                        return true;
+                    case R.id.diagnos:
+                        fragment= new FDiagnostic();
+                        return true;
+                    case R.id.medica:
+                        fragment= new FHomeMeds();
+                        return true;
+                }
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frame, fragment);
+                fragmentTransaction.commit();
+                return true;
             }
         });
-    }
 
-    private void ShowFragment(int position){
-        android.support.v4.app.Fragment fragment= null;
+        // Initializing Drawer Layout and ActionBarToggle
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawer_open, R.string.drawer_close){
 
-        switch (position){
-            case 1:
-                fragment= new FHome();
-                break;
-            case 2:
-                fragment= new FAppointment();
-                break;
-            case 3:
-                fragment= new FPrescription();
-                break;
-            case 4:
-                fragment= new FClinicHistory();
-                break;
-            case 5:
-                fragment= new FAllergy();
-                break;
-            case 6:
-                fragment= new FDiagnostic();
-                break;
-            case 7:
-                fragment= new FHomeMeds();
-                break;
-            default:
-                fragment = new FHome();
-                position =1;
-                break;
-        }
-
-        if (fragment != null) {
-            android.support.v4.app.FragmentTransaction t= getSupportFragmentManager().beginTransaction();
-            t.replace(R.id.content_frame,fragment);
-            t.commit();
-
-            drawerList.setItemChecked(position, true);
-            drawerList.setSelection(position);
-            setTitle(tagTitles[position]);
-            drawerLayout.closeDrawer(layout);
-        }
-    }
-
-    private void setupDrawer() {
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
-
-            /*Metodo llamado cuando es abierto el navigation drawer*/
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
+                super.onDrawerClosed(drawerView);
             }
 
-            /** Se llama cuando es completamente cerrado el navigation drawer. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
 
+                super.onDrawerOpened(drawerView);
             }
         };
 
-        drawerToggle.setDrawerIndicatorEnabled(true);
-        drawerLayout.setDrawerListener(drawerToggle);
+        //Setting the actionbarToggle to drawer layout
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
 
-    }
+        //calling sync state is necessay or else your hamburger icon wont show up
+        actionBarDrawerToggle.syncState();
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        drawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-        if (drawerToggle.onOptionsItemSelected(item)) {
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
             return true;
         }
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:checked="false"
+            android:icon="@drawable/home"
+            android:title="@string/inicio" />
+
+        <item
+            android:id="@+id/citas"
+            android:checked="false"
+            android:icon="@drawable/citas"
+            android:title="@string/citas" />
+
+        <item
+            android:id="@+id/recetas"
+            android:checked="false"
+            android:icon="@drawable/recetas"
+            android:title="@string/recetas" />
+        <item
+            android:id="@+id/historia"
+            android:checked="false"
+            android:icon="@drawable/historial"
+            android:title="@string/historia_clinica" />
+        <item
+            android:id="@+id/alergias"
+            android:checked="false"
+            android:icon="@drawable/alergias"
+            android:title="@string/alergias" />
+        <item
+            android:id="@+id/diagnos"
+            android:checked="false"
+            android:icon="@drawable/diagnosticos"
+            android:title="@string/diagnos" />
+        <item
+            android:id="@+id/medica"
+            android:checked="false"
+            android:icon="@drawable/medicamentos"
+            android:title="@string/medicamentos" />
+
+    </group>
+</menu>
