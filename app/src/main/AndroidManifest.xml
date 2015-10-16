@@ -19,7 +19,13 @@
         <activity
             android:name=".Login"
             android:label="@string/app_name"
-        >
+            >
+        </activity>
+
+        <activity
+            android:name=".Signin"
+            android:label="@string/app_name"
+            >
         </activity>
 
         <activity

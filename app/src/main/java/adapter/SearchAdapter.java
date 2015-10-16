@@ -47,7 +47,7 @@ public class SearchAdapter extends BaseAdapter {
 			rowLayout = (RelativeLayout)LayoutInflater.from(context).inflate(R.layout.itemsadapter, parent, false);
 			Items item = (Items)getItem(position);
 			
-			TextView tvTitle = (TextView)rowLayout.findViewById(R.id.tvTitle);
+			TextView tvTitle = (TextView)rowLayout.findViewById(R.id.diagSeveridad);
 			tvTitle.setText(item.getTitle());
 
 			TextView tvLink = (TextView)rowLayout.findViewById(R.id.tvLink);

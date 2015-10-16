@@ -1,5 +1,6 @@
 package com.ecaresoft.cumulus;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -41,30 +42,26 @@ public class MainActivity extends ActionBarActivity {
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        layout=(RelativeLayout)findViewById(R.id.layout);
+        layout = (RelativeLayout)findViewById(R.id.layout);
+
         drawerList = (ListView)findViewById(R.id.nav);
+
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         tagTitles= getResources().getStringArray(R.array.tags);
 
         View header = getLayoutInflater().inflate(R.layout.header, null);
         //header.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250));
         header.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250));
+
         drawerList.addHeaderView(header);
+
         addDrawerItems();
 
         setupDrawer();
         if (savedInstanceState == null) {
             ShowFragment(0);
         }
-    /*
-        try {
-            String json = JSONRequest.GET("http://192.168.11.190:8000/pacientes/1/");
-            Gson gson = new Gson();
-            emr = gson.fromJson(json, MEMR.class);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        */
+
         MEMR emr = new MEMR(getApplicationContext(), DataBaseHelper.getSession(getApplicationContext()));
         emr.updtate();
 
@@ -83,6 +80,8 @@ public class MainActivity extends ActionBarActivity {
         items.add(new Item(tagTitles[5], R.drawable.alergias));
         items.add(new Item(tagTitles[6], R.drawable.diagnostico));
         items.add(new Item(tagTitles[7], R.drawable.medica));
+
+        items.add(new Item("LogOut", R.drawable.medica));
 
         drawerList.setAdapter(new DrawerAdapter(this, items));
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -118,6 +117,10 @@ public class MainActivity extends ActionBarActivity {
             case 7:
                 fragment= new FHomeMeds();
                 break;
+            case 8:
+                DataBaseHelper.getLogout(getApplicationContext());
+                Intent intent = new Intent(this, Login.class);
+                startActivity(intent);
             default:
                 fragment = new FHome();
                 position =1;
@@ -126,11 +129,12 @@ public class MainActivity extends ActionBarActivity {
 
         if (fragment != null) {
             android.support.v4.app.FragmentTransaction t= getSupportFragmentManager().beginTransaction();
-            t.replace(R.id.content_frame,fragment);
+            t.replace(R.id.content_frame, fragment);
             t.commit();
 
             drawerList.setItemChecked(position, true);
             drawerList.setSelection(position);
+
             setTitle(tagTitles[position]);
             drawerLayout.closeDrawer(layout);
         }
