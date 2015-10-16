@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.ecaresoft.cumulus.helpers.database.DataBaseHelper;
 
@@ -17,7 +19,7 @@ import com.ecaresoft.cumulus.helpers.database.DataBaseHelper;
  * Created by dsolano on 9/10/15.
  */
 public class Login extends ActionBarActivity implements View.OnClickListener {
-    private Button enter;
+    private ImageButton enter;
     private EditText user;
     private EditText password;
     private TextView tvError;
@@ -33,7 +35,7 @@ public class Login extends ActionBarActivity implements View.OnClickListener {
             startActivity(intent);
         } else {
             setContentView(R.layout.login);
-            enter=(Button)findViewById(R.id.enter);
+            enter=(ImageButton)findViewById(R.id.enter);
             user=(EditText)findViewById(R.id.user);
             registro=(TextView)findViewById(R.id.registrarse);
             tvError=(TextView)findViewById(R.id.tvError);
