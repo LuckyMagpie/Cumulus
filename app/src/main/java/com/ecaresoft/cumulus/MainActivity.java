@@ -1,5 +1,6 @@
 package com.ecaresoft.cumulus;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.design.widget.NavigationView;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 Color.rgb(112, 121, 122)
         };
         ColorStateList colorStateList = new ColorStateList(states, colors);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -76,28 +78,39 @@ public class MainActivity extends AppCompatActivity {
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
 
-                    //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
                         fragment = new FHome();
+                        toolbar.setTitle(R.string.inicio);
                         break;//return true;
                     case R.id.citas:
+                        toolbar.setTitle(R.string.citas);
                         fragment = new FAppointment();
                         break;//return true;
                     case R.id.recetas:
+                        toolbar.setTitle(R.string.recetas);
                         fragment = new FPrescription();
                         break;//return true;
                     case R.id.historia:
+                        toolbar.setTitle(R.string.historia_clinica);
                         fragment = new FClinicHistory();
                         break;//return true;
                     case R.id.alergias:
+                        toolbar.setTitle(R.string.alergias);
                         fragment = new FAllergy();
                         break;//return true;
                     case R.id.diagnos:
+                        toolbar.setTitle(R.string.diagnos);
                         fragment = new FDiagnostic();
                         break;//return true;
                     case R.id.medica:
+                        toolbar.setTitle(R.string.medicamentos);
                         fragment = new FHomeMeds();
                         break;//return true;
+                    case R.id.logout:
+                        DataBaseHelper.getLogout(getApplicationContext());
+                        Intent intent=new Intent(getApplicationContext(),Login.class);
+                        startActivity(intent);
+                        return false;
                 }
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frame, fragment);

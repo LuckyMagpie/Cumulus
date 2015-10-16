@@ -13,14 +13,11 @@
     <string name="Curp">CURP</string>
     <string name="mensaje_error">*Usuario o contrase\u00F1a incorrecto(s)</string>
     <string name="logotu">Cerrar Sesion</string>
-    <string-array name="tags">
-        <item>User</item>
-        <item>Home</item>
-        <item>Citas</item>
-        <item>Recetas</item>
-        <item>Historia Cl\u00EDnica</item>
-        <item>Alergias</item>
-        <item>Diagn\u00F3sticos</item>
-        <item>Medicamentos</item>
-    </string-array>
+    <string name="inicio">Inicio</string>
+    <string name="citas">Citas</string>
+    <string name="recetas">Recetas</string>
+    <string name="historia_clinica">Historia Cl\u00EDnica</string>
+    <string name="alergias">Alergias</string>
+    <string name="diagnos">Diagn\u00F3sticos</string>
+    
 </resources>

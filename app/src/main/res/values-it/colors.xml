@@ -2,8 +2,6 @@
 <resources>
     <item name="colorPrimary" type="color">#00A493</item>
     <item name="colorPrimaryDark" type="color">#006358</item>
-    <item name="drawer_color" type="color">#00A493</item><item name="colorPrimary" type="color">#00A493</item>
-    <item name="colorPrimaryDark" type="color">#006358</item>
     <item name="drawer_color" type="color">#00A493</item>
     <item name="text_color" type="color">#f2f2f2</item>
     <item name="white" type="color">#fff</item>
