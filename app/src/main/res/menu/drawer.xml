@@ -38,6 +38,10 @@
             android:checked="false"
             android:icon="@drawable/medicamentos"
             android:title="@string/medicamentos" />
-
+        <item
+            android:id="@+id/logout"
+            android:checked="false"
+            android:icon="@drawable/logout"
+            android:title="@string/logotu" />
     </group>
 </menu>
