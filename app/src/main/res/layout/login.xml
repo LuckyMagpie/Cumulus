@@ -3,20 +3,28 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/relative"
-    android:background="#6693b0">
+    android:background="@color/colorPrimary">
 
-    <EditText
+    <RelativeLayout
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
+        android:id="@+id/relativeLayout">
+    <EditText
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/user"
         android:hint="@string/User"
-        android:layout_below="@+id/imageView"
         android:layout_alignLeft="@+id/password"
         android:layout_alignStart="@+id/password"
-        android:layout_marginTop="40dp"
+        android:gravity="center"
         android:layout_alignRight="@+id/password"
         android:layout_alignEnd="@+id/password"
-        android:theme="@style/EditTextStyle" />
+        android:textSize="20sp"
+        android:theme="@style/EditTextStyle"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -24,42 +32,32 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/password"
+        android:gravity="center"
         android:hint="@string/password"
         android:phoneNumber="true"
-        android:layout_marginTop="44dp"
+        android:theme="@style/EditTextStyle"
         android:layout_below="@+id/user"
-        android:layout_centerHorizontal="true"
-        android:theme="@style/EditTextStyle"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/enter"
-        android:textColor="#000"
-        android:id="@+id/enter"
-        android:layout_marginTop="50dp"
-        android:background="@color/white"
-        android:layout_below="@+id/password"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_alignRight="@+id/password"
-        android:layout_alignEnd="@+id/password" />
 
-    <TextView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:id="@+id/tvError"
-        android:layout_below="@+id/enter"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:layout_below="@+id/password" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/icon"
-        android:layout_marginTop="36dp"
-        android:layout_alignParentTop="true"
+    </RelativeLayout>
+
+    <ImageButton
+        android:layout_width="80dip"
+        android:layout_height="80dip"
+        android:id="@+id/enter"
+        android:background="@drawable/arrow"
+        android:adjustViewBounds="false"
+        android:layout_below="@+id/relativeLayout"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -67,7 +65,9 @@
         android:layout_height="wrap_content"
         android:text="registro"
         android:id="@+id/registrarse"
-        android:layout_below="@+id/tvError"
-        android:layout_centerHorizontal="true" />
-
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/enter"
+        android:layout_centerHorizontal="true"
+        android:textColor="#fff"
+        android:textStyle="bold"/>
 </RelativeLayout>
