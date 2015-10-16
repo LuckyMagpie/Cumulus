@@ -79,25 +79,25 @@ public class MainActivity extends AppCompatActivity {
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
                         fragment = new FHome();
-                        return true;
+                        break;//return true;
                     case R.id.citas:
                         fragment = new FAppointment();
-                        return true;
+                        break;//return true;
                     case R.id.recetas:
                         fragment = new FPrescription();
-                        return true;
+                        break;//return true;
                     case R.id.historia:
                         fragment = new FClinicHistory();
-                        return true;
+                        break;//return true;
                     case R.id.alergias:
                         fragment = new FAllergy();
-                        return true;
+                        break;//return true;
                     case R.id.diagnos:
                         fragment = new FDiagnostic();
-                        return true;
+                        break;//return true;
                     case R.id.medica:
                         fragment = new FHomeMeds();
-                        return true;
+                        break;//return true;
                 }
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frame, fragment);
