@@ -10,6 +10,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="user">User</string>
+    <string name="Curp">CURP</string>
     <string name="mensaje_error">*Usuario o contrase\u00F1a incorrecto(s)</string>
     <string-array name="tags">
         <item>User</item>

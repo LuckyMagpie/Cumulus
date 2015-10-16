@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.ecaresoft.cumulus.helpers.database.DataBaseHelper;
 
 /**
@@ -44,11 +45,8 @@ public class Login extends ActionBarActivity implements View.OnClickListener {
             registro.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    tvError.setText("");
-                    if (!user.getText().toString().trim().equals("") && !password.getText().toString().trim().equals("")) {
-                        DataBaseHelper.setDummyRegistry(getApplicationContext(), user.getText().toString(), password.getText().toString());
-                        tvError.setText("Se ha creado el registro");
-                    }
+                    Intent intent = new Intent(view.getContext(), Signin.class);
+                    startActivity(intent);
                 }
             });
         }

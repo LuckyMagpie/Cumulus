@@ -45,10 +45,12 @@ public class MEvent extends AbstractServiceModel {
             int userID = DataBaseHelper.getSession(ctx);
             String json = DataBaseHelper.getSection(ctx, userID, EVENTS_SECTION);
 
-            //Parsear Json a Objeto
-            final Type tipo = new TypeToken<List<MEvent>>(){}.getType();
-            Gson gson = new Gson();
-            eventos = gson.fromJson(json, tipo);
+            if(json != null){
+                //Parsear Json a Objeto
+                final Type tipo = new TypeToken<List<MEvent>>(){}.getType();
+                Gson gson = new Gson();
+                eventos = gson.fromJson(json, tipo);
+            }
         } catch (Exception e){}
 
         //Retornar List<Object>

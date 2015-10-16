@@ -35,11 +35,12 @@ public class MAllergy extends AbstractServiceModel {
             //Obtener Json del usuario
             int userID = DataBaseHelper.getSession(ctx);
             String json = DataBaseHelper.getSection(ctx, userID, ALLERGY_SECTION);
-
-            //Parsear Json a Objeto
-            final Type tipo = new TypeToken<List<MAllergy>>(){}.getType();
-            Gson gson = new Gson();
-            alergias = gson.fromJson(json, tipo);
+            if(json != null){
+                //Parsear Json a Objeto
+                final Type tipo = new TypeToken<List<MAllergy>>(){}.getType();
+                Gson gson = new Gson();
+                alergias = gson.fromJson(json, tipo);
+            }
         } catch (Exception e){}
 
         //Retornar List<Object>
@@ -67,14 +68,29 @@ public class MAllergy extends AbstractServiceModel {
     }
 
     public String getSeveridad() {
-        return severidad;
+        return getStringTo(severidad);
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
     public String getTipo() {
-        return tipo;
+        return getStringTo(tipo);
+    }
+
+    private String getStringTo(String tipo){
+        if(tipo != null){
+            switch (tipo){
+                case "A":
+                    return "Alta";
+                case "M":
+                    return "Media";
+                case "B":
+                    return "Baja";
+                default:
+                    return "";
+            }
+        }
+        return "";
     }
 }

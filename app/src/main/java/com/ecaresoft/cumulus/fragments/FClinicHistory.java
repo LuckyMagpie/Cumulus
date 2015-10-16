@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ecaresoft.cumulus.R;
 import com.ecaresoft.cumulus.components.AbstractEMRSection;
@@ -21,27 +22,17 @@ import java.util.List;
 public class FClinicHistory extends AbstractEMRSection<MHistory> {
 
     @Override
-    public int getRecyclerViewID() {
-        return 0;
-    }
-
-    @Override
-    public int getSectionViewID() {
-        return R.layout.historia_clinica;
-    }
-
-    @Override
     public List<MHistory> getResult() {
         return MHistory.getHistory(getContext());
     }
 
     @Override
     public void render(ItemsViewHolder item, int index, MHistory object) {
-
+        ((TextView)(item.findViewById(R.id.diagNombre))).setText(object.getClinica());
     }
 
     @Override
     public int getCardLayoutID() {
-        return 0;
+        return R.layout.allergy_card;
     }
 }

@@ -16,7 +16,8 @@ import org.json.JSONObject;
  */
 public class SectionAsyncTask extends AsyncTask<String, Void, String> {
 
-    public static String SERVER_URL = "http://192.168.0.4/pacientes/"; //"http://192.168.11.190:8000/pacientes/";
+    public static String SERVER_URL = "http://192.168.11.190:8000/pacientes/"; //"http://192.168.56.1/pacientes/";
+    public static String ICD10_URL = "http://icd10api.com/?code=";
 
     public Context ctx;
     public int userID;
@@ -27,6 +28,10 @@ public class SectionAsyncTask extends AsyncTask<String, Void, String> {
         this.ctx = ctx;
         this.section = section;
         this.execute(SERVER_URL + userID + "/" + section);
+    }
+
+    public SectionAsyncTask(Context ctx, String ICD10){
+        this.ctx = ctx;
     }
 
     /**
@@ -51,9 +56,9 @@ public class SectionAsyncTask extends AsyncTask<String, Void, String> {
      */
     @Override
     protected void onPostExecute(String result) {
-        if(validateJson(result)){
+        //if(validateJson(result)){
             DataBaseHelper.setSection(ctx, userID, section, result);
-        }
+        //}
     }
 
     /**

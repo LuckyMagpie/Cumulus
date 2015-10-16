@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/rlTutorialInfo"
+    android:layout_width="fill_parent"
+    android:paddingLeft="12sp"
+    android:paddingRight="12sp"
+    android:paddingBottom="6sp"
+    android:paddingTop="4sp"
+    android:layout_height="wrap_content">
+
+
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:id="@+id/cv"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="12dp"
+        card_view:cardBackgroundColor="@color/white"
+        card_view:contentPaddingTop="-10sp"
+        app:cardPreventCornerOverlap="false"
+        android:padding="10sp"
+        app:cardUseCompatPadding="true"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_width="match_parent"
+                android:id="@+id/eventsName"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:textSize="10dp"
+                android:textColor="#000"
+                android:layout_margin="1dp"
+                android:capitalize="words"
+                android:textStyle="normal"
+                android:typeface="serif">
+            </TextView>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
