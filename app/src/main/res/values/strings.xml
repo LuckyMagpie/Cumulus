@@ -14,7 +14,7 @@
     <string name="Curp">CURP</string>
     <string name="password">Password</string>
     <string name="mensaje_error">Usuario o contrase\u00F1a incorrecto(s)</string>
-    <string name="user">User</string>
+    <string name="user">Usuario</string>
     <string name="inicio">Inicio</string>
     <string name="citas">Citas</string>
     <string name="recetas">Recetas</string>
@@ -22,4 +22,5 @@
     <string name="alergias">Alergias</string>
     <string name="diagnos">Diagn\u00F3sticos</string>
     <string name="medicamentos">Medicamentos</string>
+    <string name="Confpassword">Confirmar Password</string>
 </resources>

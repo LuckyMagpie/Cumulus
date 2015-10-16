@@ -10,6 +10,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="mensaje_error">*User or Password is/are wrong</string>
+    <string name="Confpassword">Confirm Password</string>
 
     <string-array name="tags">
         <item>User</item>

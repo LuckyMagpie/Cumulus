@@ -41,13 +41,6 @@
         android:layout_alignParentStart="true" />
 
 
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/tvError"
-        android:textColor="@color/white"
-        android:layout_below="@+id/password" />
 
     </RelativeLayout>
 
@@ -58,12 +51,26 @@
         android:background="@drawable/arrow"
         android:adjustViewBounds="false"
         android:layout_below="@+id/relativeLayout"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="registro"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tvError"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/registrarse"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registro"
         android:id="@+id/registrarse"
         android:layout_marginTop="35dp"
         android:layout_below="@+id/enter"

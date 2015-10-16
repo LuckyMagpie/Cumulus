@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ecaresoft.cumulus.R;
@@ -16,24 +17,24 @@ import com.ecaresoft.cumulus.helpers.database.DataBaseHelper;
  * Created by erodriguez on 11/10/2015.
  */
 public class Signin extends ActionBarActivity implements View.OnClickListener {
-    private Button registrarse;
+    private ImageButton registrarse;
     private TextView txtError;
     private EditText txtName, txtCurp, txtUserName, password, passwordConfirm;
-    private Button btnConfitm;
+    private ImageButton btnConfitm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.signin);
-        registrarse=(Button)findViewById(R.id.enter);
+        registrarse=(ImageButton)findViewById(R.id.enter);
         txtError=(TextView)findViewById(R.id.txtError);
 
         txtCurp=(EditText)findViewById(R.id.txtCurp);
         txtUserName=(EditText)findViewById(R.id.txtUserName);
         password =(EditText)findViewById(R.id.password);
         passwordConfirm=(EditText)findViewById(R.id.passwordConfirm);
-        btnConfitm=(Button)findViewById(R.id.registrarse);
+        btnConfitm=(ImageButton)findViewById(R.id.registrarse);
         btnConfitm.setOnClickListener(this);
 
 
