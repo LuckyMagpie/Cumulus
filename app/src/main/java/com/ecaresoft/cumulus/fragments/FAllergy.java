@@ -18,16 +18,6 @@ import java.util.List;
 public class FAllergy extends AbstractEMRSection<MAllergy> {
 
     @Override
-    public int getRecyclerViewID() {
-        return R.id.rvaler;
-    }
-
-    @Override
-    public int getSectionViewID() {
-        return R.layout.alergias;
-    }
-
-    @Override
     public int getCardLayoutID() {
         return R.layout.allergy_card;
     }

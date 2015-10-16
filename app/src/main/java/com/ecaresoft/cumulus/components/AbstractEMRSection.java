@@ -46,9 +46,13 @@ public abstract class AbstractEMRSection<T extends Object> extends Fragment {
         inflater.inflate(R.menu.menu_main, menu);
     }
 
-    public abstract int getRecyclerViewID();
+    public int getRecyclerViewID() {
+        return R.id.emr_recicler;
+    }
 
-    public abstract int getSectionViewID();
+    public int getSectionViewID() {
+        return R.layout.emr_section_layout;
+    }
 
     public abstract List<T> getResult();
 

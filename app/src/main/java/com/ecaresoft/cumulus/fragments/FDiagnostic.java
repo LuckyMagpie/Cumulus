@@ -15,16 +15,6 @@ import java.util.List;
 public class FDiagnostic extends AbstractEMRSection<MDiagnosis> {
 
     @Override
-    public int getRecyclerViewID() {
-        return R.id.rvdiag;
-    }
-
-    @Override
-    public int getSectionViewID() {
-        return R.layout.diagnosticos;
-    }
-
-    @Override
     public int getCardLayoutID() {
         return R.layout.diagnosis_card;
     }

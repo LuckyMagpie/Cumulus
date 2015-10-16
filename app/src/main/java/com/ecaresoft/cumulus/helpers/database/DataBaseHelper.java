@@ -94,6 +94,28 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return session;
     }
 
+    //Cierra la Session Activa
+    public static int getLogout(Context ctx){
+        int session = 0;
+        try{
+            DataBaseHelper conection = new DataBaseHelper(ctx);
+            String sql = "SELECT " + Table.Users.user_id + " FROM " + Table.Users.table_name + " WHERE " + Table.Users.active + " = 1 LIMIT 1;";
+            SQLiteDatabase sq=conection.getWritableDatabase();
+            Cursor rs = sq.rawQuery(sql, new String[]{});
+            if (rs != null && rs.moveToFirst()) {
+                session = rs.getInt(0);
+                sq.execSQL("UPDATE " + Table.Users.table_name
+                        + " SET " + Table.Users.active
+                        + " = 0 WHERE " + Table.Users.user_id + " = " + session);
+            }
+            conection.close();
+        } catch (Exception e){
+            //Error al recuperar si hay un usuario logeado
+        }
+        return session;
+    }
+
+
     //Actualiza la seccion
     public static int setSection(Context ctx, int userID, String section, String json){
         int updated = 0;

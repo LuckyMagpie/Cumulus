@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ecaresoft.cumulus.R;
 import com.ecaresoft.cumulus.components.AbstractEMRSection;
@@ -19,15 +20,6 @@ import java.util.List;
  * Created by juanortizjr on 9/10/15.
  */
 public class FHomeMeds extends AbstractEMRSection<MHomeMed> {
-    @Override
-    public int getRecyclerViewID() {
-        return 0;
-    }
-
-    @Override
-    public int getSectionViewID() {
-        return R.layout.medicamentos;
-    }
 
     @Override
     public List<MHomeMed> getResult() {
@@ -36,11 +28,12 @@ public class FHomeMeds extends AbstractEMRSection<MHomeMed> {
 
     @Override
     public void render(ItemsViewHolder item, int index, MHomeMed object) {
-
+        ((TextView)(item.findViewById(R.id.diagNombre))).setText(object.getNombre());
+        ((TextView)(item.findViewById(R.id.diagReaccion))).setText(object.getIndicacion());
     }
 
     @Override
     public int getCardLayoutID() {
-        return 0;
+        return R.layout.allergy_card;
     }
 }
